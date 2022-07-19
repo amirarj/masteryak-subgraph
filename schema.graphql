@@ -1,0 +1,41 @@
+type DepositTo @entity {
+  id: ID!
+  amount: BigInt!
+  harvest: Boolean!
+  blockTimestamp: BigInt!
+  user: User
+  pool: Pool
+}
+
+type WithdrawTo @entity {
+  id: ID!
+  amount: BigInt!
+  blockTimestamp: BigInt!
+  user: User
+  pool: Pool
+}
+
+type User @entity { 
+  id: ID!
+  deposit: [DepositTo!] @derivedFrom(field: "user")
+  withdraw: [WithdrawTo!] @derivedFrom(field: "user")
+}
+
+type Pool @entity {
+  id: ID!
+  pair: Bytes!
+  name: String!
+  allocPoint: BigInt!
+  lastRewardTimestamp: BigInt!
+  accRewardsPerShare: BigInt!
+  totalStaked: BigInt!
+  vpForDeposit: Boolean!
+  deposit: [DepositTo!] @derivedFrom(field: "pool")
+  withdraw: [WithdrawTo!] @derivedFrom(field: "pool")
+}
+
+type RewardsEndTimestamp @entity {
+  id: ID!
+  oldEndTimestamp: BigInt!
+  newEndTimestamp: BigInt!
+}

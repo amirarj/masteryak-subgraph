@@ -1,0 +1,16 @@
+{
+  "name": "masteryak",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ marji0/masteryak",
+    "create-local": "graph create --node http://localhost:8020/ marji0/masteryak",
+    "remove-local": "graph remove --node http://localhost:8020/ marji0/masteryak",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 marji0/masteryak"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.23.0",
+    "@graphprotocol/graph-ts": "0.22.1"
+  }
+}
